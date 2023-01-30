@@ -1,0 +1,15 @@
+.profile__block {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 700px) {
+    .profile__block {
+        margin: 0;
+    }
+}

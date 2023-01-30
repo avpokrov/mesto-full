@@ -1,0 +1,9 @@
+.header__block{
+    display: flex;
+}
+
+@media screen and (max-width: 500px) {
+    .header__block{
+        display: block;
+    }
+} 

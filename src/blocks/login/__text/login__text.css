@@ -1,0 +1,13 @@
+.login__text{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0 0 0 5px;
+}
+.login__text:first-child{
+    margin: 0;
+}

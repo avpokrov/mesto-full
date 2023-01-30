@@ -1,0 +1,19 @@
+.profile__wrapper {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    background-image: url("../../../images/Edit.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 26px;
+    background-color: rgba(0, 0, 0, .8);
+    transition: .1s opacity ease-in-out;
+}
+
+.profile__wrapper:hover {
+    opacity: 1;
+}
