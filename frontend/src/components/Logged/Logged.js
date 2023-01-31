@@ -17,23 +17,23 @@ function Logged(loggedIn) {
   const [selectedCard, setCardClick] = useState({});
   const [cards, setCards] = useState([]);
 
-  const handleCurrentUser = () => {
-    if(loggedIn){
-      api
-      .getUserInfo()
-      .then((data) => {
-        console.log(data);
-        setCurrentUser(data);
-      })
-      .catch((err) => console.log(err));
-    }
-  };
+  // const handleCurrentUser = () => {
+  //   if(loggedIn){
+  //     api
+  //     .getUserInfo()
+  //     .then((data) => {
+  //       setCurrentUser(data);
+  //     })
+  //     .catch((err) => console.log(err));
+  //   }
+  // };
 
   const onUpdateUser = (name, description) => {
     api
       .setUserInfo(name, description)
       .then((data) => {
-        setCurrentUser(data);
+        console.log(data);
+        setCurrentUser(data.data);
         handleClose();
       })
       .catch((err) => console.log(err));
@@ -43,15 +43,22 @@ function Logged(loggedIn) {
     api
       .setUserAvatar(link)
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.data);
         handleClose();
       })
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    handleCurrentUser();
-  }, []);
+    if(loggedIn){
+      api
+      .getUserInfo()
+      .then((data) => {
+        setCurrentUser(data);
+      })
+      .catch((err) => console.log(err));
+    };
+  }, [loggedIn]);
 
   const handleEditProfileClick = () => {
     setEditProfileOpen(true);
@@ -111,7 +118,7 @@ function Logged(loggedIn) {
       })
       .catch((err) => console.log(err));
     }
-  }, []);
+  }, [loggedIn]);
 
   function handleAddPlaceSubmit(card) {
     api
