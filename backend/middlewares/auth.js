@@ -3,9 +3,7 @@ const UnauthorizedError = require('../errors/UnauthorizedError');
 
 function auth(req, res, next) {
   const { authorization } = req.headers;
-  const token = authorization.replace('Bearer ', '');
-  
-  console.log(req);
+  const token = authorization;
   let payload;
 
   try {

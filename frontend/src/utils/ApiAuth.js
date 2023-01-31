@@ -25,7 +25,7 @@ class ApiAuth {
     signin(data){
         return fetch(`${this._baseUrl}/signin`,{
             method: "POST",
-            headers:{"Content-Type":this._contentType},
+            headers:{"Content-Type":this._contentType,},
             body: JSON.stringify({
                 password: data.password,
                 email: data.email
@@ -37,7 +37,7 @@ class ApiAuth {
         return fetch(`${this._baseUrl}/users/me`,{
             method: "GET",
             headers:{"Content-Type":this._contentType, 
-            "Authorization" : `Bearer ${jwt}`}
+            "Authorization" :jwt}
         }).then(this._checkResponse)
     }
 }
