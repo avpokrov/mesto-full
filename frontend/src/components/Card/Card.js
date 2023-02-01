@@ -3,8 +3,8 @@ import React from "react";
 
 function Card({ card, cardClick, onCardLike, onCardDelete }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const isOwn = card.owner._id === currentUser._id;
-  const isLiked = card.likes.some((i) => i._id === currentUser._id);
+  const isOwn = card.owner === currentUser._id;
+  const isLiked = card.likes.some((i) => i === currentUser._id);
   const elementDeleteButtonClassName = `element__button-delete ${
     isOwn ? "element__delete-button_visible" : "element__delete-button_hidden"
   }`;

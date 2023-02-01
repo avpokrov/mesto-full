@@ -25,13 +25,11 @@ const createUser = async (req, res, next) => {
       password: passwordHash,
     });
     return res.status(CREATED_CODE).send({
-      data: {
-        _id: user._id,
-        name: user.name,
-        about: user.about,
-        avatar: user.avatar,
-        email: user.email,
-      },
+      _id: user._id,
+      name: user.name,
+      about: user.about,
+      avatar: user.avatar,
+      email: user.email,
     });
   } catch (err) {
     if (err.code === 11000) {
@@ -57,9 +55,7 @@ const updateUser = async (req, res, next) => {
       runValidators: true,
     });
     if (user) {
-      return res.send({
-        data: user,
-      });
+      return res.send(user);
     }
     return next(new NotFoundError('Пользователь не найден'));
   } catch (err) {
@@ -81,9 +77,7 @@ const updateUserAvatar = async (req, res, next) => {
       runValidators: true,
     });
     if (user) {
-      return res.send({
-        data: user,
-      });
+      return res.send(user);
     }
     return next(new NotFoundError('Пользователь не найден'));
   } catch (err) {
@@ -140,10 +134,12 @@ const login = async (req, res, next) => {
     }
     const token = jwt.sign({
       _id: user._id,
-    }, 'secret', {expiresIn: '7d'});
+    }, 'secret', { expiresIn: '7d' });
 
-    return res.send({ messge: 'Успешная авторизация',
-      token });
+    return res.send({
+      messge: 'Успешная авторизация',
+      token,
+    });
   } catch (err) {
     return next(err);
   }

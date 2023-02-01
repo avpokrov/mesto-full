@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
 import React from "react";
-import api from "../../utils/Api";
 import Card from "../Card/Card";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
@@ -14,7 +12,6 @@ function Main({
   handleCardDelete,
 }) {
   const currentUser = React.useContext(CurrentUserContext);
-  console.log('Main', currentUser);
   return (
     <main className="content">
       <section className="profile">
